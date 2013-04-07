@@ -20,6 +20,14 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+# Gems used only for testing and not required 
+# in production environments by default
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'rspec'
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
