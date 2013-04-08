@@ -1,14 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Brain</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) + " : My Web Brain" : "My Web Brain" %></title>
+  <meta name="description" content="">
+  <meta name="author" content="">  
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <!-- stylesheet_link_tag "application", :media => "all" -->
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield(:head) %>
+
 </head>
 <body>
+  <div id="main" class="container">
+    <header class="span12">
+    </header>
 
-<%= yield %>
+    <div id="content" class="span12">
+      <%= yield %>
+    </div>
+  </div>
+
 
 </body>
 </html>
