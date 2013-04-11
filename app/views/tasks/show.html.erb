@@ -11,8 +11,11 @@
 </p>
 
 <p>
-  <b>Completed date:</b>
-  <%= @task.completed_at %>
+  <% if @task.completed? %>
+    Completed <%= time_ago_in_words(@task.completed_at) %> ago.
+  <% else %>
+    This task has not been completed.
+  <% end %>
 </p>
 
 

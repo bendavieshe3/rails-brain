@@ -12,7 +12,7 @@
 
 <% @tasks.each do |task| %>
   <tr>
-    <td><%= task.title %></td>
+    <td><%= link_to task.title, task %></td>
     <td><%= task.description %></td>
     <td><%= task.completed_at %></td>
     <td><%= link_to 'Show', task %></td>

@@ -42,6 +42,12 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(params[:task])
 
+    if params[:has_been_completed]
+      @task.completed_at = Time.now
+    else 
+      @task.completed_at = nil
+    end
+
     respond_to do |format|
       if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
@@ -58,8 +64,16 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
 
+    if params[:has_been_completed]
+      @task.completed_at = Time.now
+    else 
+      @task.completed_at = nil
+    end
+
+    @task.assign_attributes(params[:task])
+
     respond_to do |format|
-      if @task.update_attributes(params[:task])
+      if @task.save
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else

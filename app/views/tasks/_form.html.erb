@@ -19,6 +19,11 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+  <div class="field">
+    <label for="is-completed-checkbox">Has been completed?</label>
+    <input type="checkbox" name="has_been_completed" id="has_been_completed"
+      <% if @task.completed? %>checked<% end %> />
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
