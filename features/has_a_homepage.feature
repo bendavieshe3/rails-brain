@@ -4,5 +4,5 @@ Feature: My Web Brain has a homepage
   SO THAT I can start my use or learning about My Web Brain from there
 
   Scenario: 
-    When I visit the homepage
+    When I visit the My Web Brain Home Page
     Then I should see "My Web Brain"

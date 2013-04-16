@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) + " : My Web Brain" : "My Web Brain" %></title>
+  <title><%= @title ? @title + " : My Web Brain" : "My Web Brain" %></title>
   <meta name="description" content="">
   <meta name="author" content="">  
   <%= stylesheet_link_tag "application", :media => "all" %>
@@ -13,7 +13,7 @@
   <%= yield(:head) %>
 
 </head>
-<body>
+<body id="<%= @page_id %>">
   <div id="main" class="container">
     <header class="span12">
     </header>
