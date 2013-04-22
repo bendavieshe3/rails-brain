@@ -11,5 +11,8 @@
  *= require_self
  *= require normalize
  *= require main
- *= require_tree ./application
+ *= require_tree ./site
  */
+
+body { padding-top: 60px; }
+

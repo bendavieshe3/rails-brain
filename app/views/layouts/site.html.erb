@@ -13,7 +13,7 @@
   <meta name="description" content="">
   <meta name="author" content="">  
   
-  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= stylesheet_link_tag "site", :media => "all" %>
   <!-- stylesheet_link_tag "application", :media => "all" -->
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -22,21 +22,15 @@
 </head>
 <body id="<%= @page_id %>">
 
-  <div class="navbar">
-    <div class="navbar-inner">
-      <a class="brand" href="/">My Web Brain</a>
-      <ul class="nav">
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="/about">Link</a></li>
-      </ul>
-    </div>
-  </div>
-
   <div id="main" class="container">
 
 
 
     <header class="span12">
+      <div class="hero-unit">
+        <h1>My Web Brain</h1>
+        <p>Your Brain on the Internet</p>
+      </div>
     </header>
 
     <div id="content" class="span12">
