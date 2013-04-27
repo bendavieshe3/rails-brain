@@ -26,8 +26,10 @@
     <div class="navbar-inner">
       <a class="brand" href="/">My Web Brain</a>
       <ul class="nav">
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="/about">Link</a></li>
+        <li class="<%= @active_tab == 'home' ? 'active':'' %>"><a href="/">Home</a></li>
+        <li class="<%= @active_tab == 'tasks' ? 'active':'' %>"><a href="/tasks">Tasks</a></li>
+        <li class="<%= @active_tab == 'admin' ? 'active':'' %>"><a href="/admin">Admin</a></li>
+        <li><a href="/about">About</a></li>
       </ul>
     </div>
   </div>

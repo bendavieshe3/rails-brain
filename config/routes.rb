@@ -1,8 +1,15 @@
 Brain::Application.routes.draw do
 
+  get "admin/index"
+
+  resources :users
+
+
   root to: "home#index"
 
   resources :tasks
+
+  get '/admin' => 'admin#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
