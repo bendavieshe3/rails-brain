@@ -36,6 +36,14 @@ Then /^the page should look ok$/ do
   @page.ok?
 end
 
+Then /^I should( not)? see the (#{WORDS}) on the page$/ do |do_not_want, name|
+  if do_not_want
+    page.should have_no_selector(@page.selector(name))
+  else
+    page.should have_selector(@page.selector(name))
+  end
+end
+
 Then /^there should be (many|no) (#{WORD}) (?:displayed|listed|shown)$/ do | quantifier, collection |
   collection = @page.send(collection.to_sym)
   number_of_items = collection.length
@@ -83,12 +91,6 @@ Then /^the (#{WORD}) (#{WORD})? (#{QUOTED_STRING}) should( not)? be listed under
 end
 
 # Assertions
-
-Then /^I should find (.+)$/ do |input|
-  #TODO: This is too vague 
-  page.should have_content(input)
-end
-
 Then /^It should have at least (#{CAPTURE_NUMBER}) rows?$/ do | num_rows |
   page.should have_selector('tr', :count => num_rows + 1) # Adds 1 due to the header 'TR' row
 end

@@ -1,0 +1,17 @@
+<%= form_tag(do_login_path, id:'login') do %>
+<fieldset>
+    <legend>Sign In</legend>
+    <%= label_tag(:emailaddress, 'Email Address') %>
+    <%= email_field(:emailaddress, '', placeholder:'john@doe.com') %>
+    <%= label_tag(:password, 'Password') %>
+    <%= password_field_tag(:password, '', placeholder:'your password') %>
+    <div class="control-group">
+      <div class="controls">
+        <label class="checkbox">
+          <input type="checkbox"> Remember me
+        </label>
+        <button type="submit" class="btn">Sign in</button>
+      </div>
+    </div>    
+  </fieldset>
+<% end %>

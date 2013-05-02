@@ -27,10 +27,39 @@
 
 
     <header class="span12">
+
+      <div class="navbar">
+        <div class="navbar-inner">
+          <a class="brand" href="#">My Web Brain</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+          <ul class="nav pull-right">
+            <li class="active"><a class="" href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+          </ul>          
+        </div>
+      </div>
+
+      <% if flash[:error] %>
+        <div id="error" class="alert alert-error">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          <strong>Oh snap!</strong> <%= flash[:error] %>
+        </div>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <div id="notice" class="alert alert-success">
+          <a href="#" class="close" data-dismiss="alert">&times;</a>
+          <strong>Good news!</strong> <%= flash[:notice] %>
+        </div>
+      <% end %>
+
       <div class="hero-unit">
         <h1>My Web Brain</h1>
         <p>Your Brain on the Internet</p>
-      </div>
+      </div>      
     </header>
 
     <div id="content" class="span12">

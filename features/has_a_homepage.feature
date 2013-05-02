@@ -5,4 +5,5 @@ Feature: My Web Brain has a homepage
 
   Scenario: 
     When I visit the My Web Brain Home Page
-    Then I should see "My Web Brain"
+    Then I should see "My Web Brain" on the page
+    And I should see the login form on the page

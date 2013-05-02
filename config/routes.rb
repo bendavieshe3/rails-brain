@@ -1,15 +1,22 @@
 Brain::Application.routes.draw do
 
-  get "admin/index"
-
-  resources :users
-
-
+  
   root to: "home#index"
 
+  get '/admin' => 'admin#index'
+  get "admin/index"
+
+  get '/login' => 'login#show', as: :show_login
+  post '/login' => 'login#login', as: :do_login
+  delete '/login' => 'login#logout', as: :do_logout
+
+  resources :users
   resources :tasks
 
-  get '/admin' => 'admin#index'
+
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
