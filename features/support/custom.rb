@@ -1,3 +1,0 @@
-# Custom Requires
-
-require 'rspec'
