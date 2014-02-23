@@ -9,4 +9,22 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Brain::Application.config.secret_key_base = 'e3f02476e47fb1fa857fa2ef829b2347612c9f7d99b3e5e55b94fcf8bdefe14763166f76e7bcfc65ccacd9cb2908a45d98cec413e917c3a2c33480ed7a4328a4'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # use the existing token
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+
+
+Brain::Application.config.secret_key_base = secure_token
