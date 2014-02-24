@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "Static pages" do
   
+  let(:common_part_of_title) { 'My Web Brain' }
+
   describe "Home page" do
 
     it "should have the content 'My Web Brain'" do
@@ -30,7 +32,7 @@ describe "Static pages" do
 
     it "should have it should have 'Help' as the title" do
       visit '/static_pages/help'
-      expect(page).to have_title("Help | My Web Brain")
+      expect(page).to have_title("Help | #{common_part_of_title}")
     end
 
   end
@@ -44,7 +46,7 @@ describe "Static pages" do
 
     it "should have it should have 'About' as the title" do
       visit '/static_pages/about'
-      expect(page).to have_title("About | My Web Brain")
+      expect(page).to have_title("About | #{common_part_of_title}")
     end
 
   end
