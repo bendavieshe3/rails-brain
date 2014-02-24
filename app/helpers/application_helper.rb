@@ -1,16 +1,28 @@
 module ApplicationHelper
 
-  def common_title 
+  def base_title 
     'My Web Brain'
   end
 
-  def title(page_title, embelish=true)
-    provide :title, if embelish 
-      "#{page_title} | #{common_title}" 
+  def page_title
+    @page_title
+  end
+
+  def embelish_page_title; @embelish_page_title; end
+
+  def full_title
+    if page_title and embelish_page_title
+      "#{page_title} | #{base_title}"
+    elsif page_title
+      page_title
     else
-      page_title.to_s
+      base_title
     end
   end
 
+  def title(page_title, embelish_page_title=true)
+    @page_title = page_title
+    @embelish_page_title = embelish_page_title
+  end
 
 end

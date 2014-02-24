@@ -21,6 +21,12 @@ describe "Static pages" do
       expect(page).to have_title("My Web Brain: Your Brain on the Internet")
     end
 
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      expect(page).not_to have_title('Home')
+    end
+
+
   end
 
   describe "Help page" do
