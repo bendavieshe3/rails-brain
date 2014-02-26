@@ -1,8 +1,14 @@
 <% title('My Web Brain: Your Brain on the Internet', false) %>
 
-<h1>My Web Brain</h1>
-<h2>Your Brain on the Internet</h2>
+<div class="center hero-unit">
+  <h1>My Web Brain</h1>
+  <h2>Your Brain on the Internet</h2>
+  <%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+</div>
+
 <p>
   My Web Brain is a GTD-style productivity tool. It allows you to collect your thoughts, process 
   them into actions, reminders and reference material.
 </p>
+
+<%= link_to image_tag("mywebbrain_logo.png", alt: "My Web Brain"), 'http://mywebbrain.com/' %>
