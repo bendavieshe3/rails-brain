@@ -84,5 +84,8 @@ end
 # These instructions should self-destruct in 10 seconds.  If they don't, feel
 # free to delete them.
 
-
+# TODO Find a more permanent home for this kind of helper method
+def within_the(css, &block)
+  within(:css, css) { yield }
+end
 

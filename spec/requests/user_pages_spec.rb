@@ -1,4 +1,5 @@
 require 'spec_helper'
+# require_relative 'all_pages_spec'
 
 describe "User Pages" do
   subject { page }
@@ -6,7 +7,10 @@ describe "User Pages" do
   describe "signup page" do
     before { visit signup_path }
 
-    it { should have_heading 'Sign up' }
-    it { should have_title 'Sign up'}
+    let(:title) { "Sign up | #{common_part_of_title}" }
+    let(:heading) { "Sign up" }
+
+    it_should_behave_like "all pages"
+
   end
 end
