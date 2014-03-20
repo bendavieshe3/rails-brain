@@ -39,6 +39,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.1.0)
+      capybara (~> 2.0, >= 2.0.2)
+      json
     celluloid (0.15.2)
       timers (~> 1.1.0)
     celluloid-io (0.15.0)
@@ -57,6 +60,11 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     ffi (1.9.3)
     formatador (0.2.4)
     growl (1.0.3)
@@ -201,7 +209,9 @@ DEPENDENCIES
   bcrypt-ruby
   bootstrap-sass
   capybara
+  capybara-webkit
   coffee-rails (~> 4.0.0)
+  factory_girl_rails
   growl
   guard-rspec
   guard-spork

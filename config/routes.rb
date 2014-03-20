@@ -1,11 +1,19 @@
 Brain::Application.routes.draw do
 
+  get "users/show"
+  get "users/index"
   root 'static_pages#home'
   
-  get "users/new"
-  get "/signup", to: 'users#new'
+  get '/signup', to: 'users#new'
   get '/help', to: 'static_pages#help', via: 'get'
   get '/about', to: 'static_pages#about'
+
+  resources :users, only: [:create]
+
+  namespace :admin do
+    resources :users, only: [:show, :index]
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

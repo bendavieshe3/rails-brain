@@ -45,7 +45,12 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
 
+
+    config.include WebPageNouns
     config.include Capybara::DSL
+
+    Capybara.default_driver = :rack_test
+    Capybara.javascript_driver = :webkit
   end
 
 end

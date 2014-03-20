@@ -1,10 +1,5 @@
 require 'spec_helper'
 
-
-
-# Page = Struct.new(:)
-
-
 describe "Static pages" do
   
   subject { page }

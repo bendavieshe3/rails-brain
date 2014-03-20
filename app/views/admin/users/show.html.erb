@@ -1,0 +1,21 @@
+<% title "User Profile for #{@user.email}" %>
+
+<div class="row">
+  <h1>User Profile for <%= @user.email %></h1>  
+</div>
+
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= link_to @user.email, "mailto:#{@user.email}" %>       
+      </h1>
+    </section>
+  </aside>
+</div>
+
+
+
+
+

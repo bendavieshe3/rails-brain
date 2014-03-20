@@ -1,6 +1,32 @@
-<% title 'Sign up' %>
+<% title 'Sign up', tagline: 'for My Web Brain' %>
 
-<h1>Sign up</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<p> Use the form below to sign up for an account.</p>
 
+<div class="row">
+  <div class="col-md-6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control auto-focus' %>
+        <p class="help-block">We use your email to identify you. You'll receive an email to verify it.</p>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+        <p class="help-block">This must be a least 6 characters.</p>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <p class="help-block">Enter your chosen password again to make sure.</p>
+      </div>
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+      <%= link_to "Not right now", root_path %>
+    <% end %> 
+  </div>
+</div>
 
