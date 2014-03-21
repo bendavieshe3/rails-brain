@@ -32,9 +32,14 @@ describe "User Pages" do
         end
 
         # TODO: This needs to be changed to the Today page
-        it "should create a user and change to the home page" do
+        it "should create a user" do
           expect { click_button submit }.to change(User,:count).by(1)
-          current_path.should == root_path
+        end
+
+        it "should take the user to the weclome page and confirm success" do
+          click_button submit
+          current_path.should == welcome_path
+          page.should have_an_alert.of_type(:success)
         end
 
       end

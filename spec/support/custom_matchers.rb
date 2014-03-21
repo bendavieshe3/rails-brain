@@ -79,3 +79,30 @@ RSpec::Matchers.define :have_a  do | element |
     message = "have an element .#{element.to_s}"
   end
 end
+
+
+RSpec::Matchers.define :have_an_alert  do 
+
+  match do | actual |
+    @selector = ".alert"
+    @selector = ".alert.alert-#{@type}" if @type
+    page.has_selector? @selector
+  end
+
+  chain :of_type do | type |
+    @type = type
+  end
+
+  failure_message_for_should do |actual|
+    message = "Could not find an alert as described on the page (looking for " +
+      "#{@selector})."
+  end
+
+  failure_message_for_should_not do |actual|
+    message = "Found an alert as described on the page"
+  end 
+
+  description do 
+    message = "have an alert (with class .alert)"
+  end
+end

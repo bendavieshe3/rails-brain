@@ -7,6 +7,7 @@ Brain::Application.routes.draw do
   get '/signup', to: 'users#new'
   get '/help', to: 'static_pages#help', via: 'get'
   get '/about', to: 'static_pages#about'
+  get '/welcome', to: 'static_pages#welcome'
 
   resources :users, only: [:create]
 
