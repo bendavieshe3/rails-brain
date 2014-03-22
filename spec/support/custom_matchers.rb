@@ -45,18 +45,35 @@ end
 RSpec::Matchers.define :have_a  do | element | 
 
   match do | actual |
-    @selector = "#{@tag_type}\##{element.to_s}"
-    @found_element = page.find(:css, @selector) 
-    if @thing_to_count.nil?
-      #simple match
-      @found_element
+    @element = element.to_s.gsub('_','-')
+    @id_selector = "#{@tag_type}\##{@element}"
+    @class_selector = "#{@tag_type}.#{@element}"
+
+    @found_selector = found_selector(@id_selector, @class_selector)
+
+    if @found_selector.nil?
+      false
+    elsif @things_to_count.nil?
+      true
     else
-      @found_element && @found_element.has_css?(@thing_to_count, count: @count)
+      page.find(:css, @found_selector).has_css?(@thing_to_count, count: @count)
     end
   end
 
+
+  def found_selector(*selectors)
+    selectors.detect do |selector|
+      page.has_selector?(selector)
+    end
+  end
+
+
   chain :table do
     @tag_type = 'table'
+  end
+
+  chain :section do
+    @tag_type = 'div'
   end
 
   chain :with do | number |
@@ -68,15 +85,17 @@ RSpec::Matchers.define :have_a  do | element |
   end
 
   failure_message_for_should do |actual|
-    message = "Element .#{element.to_s} was not found on the page"
+    message = "Element '#{@id_selector}' or '#{@class_selector}' was not " + 
+      "found on the page"
   end
 
   failure_message_for_should_not do |actual|
-    message = "Element .#{element.to_s} was found on the page"
+    message = "Element '#{@id_selector}' or '#{@class_selector}' was " + 
+      "found on the page"
   end 
 
   description do 
-    message = "have an element .#{element.to_s}"
+    message = "have an element '#{@id_selector}' or '#{@class_selector}'"
   end
 end
 

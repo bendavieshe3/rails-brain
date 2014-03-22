@@ -21,7 +21,13 @@ describe "User Pages" do
       describe "with invalid information" do
         it "should not create a user" do
           expect { click_button submit }.not_to change(User, :count)
-        end 
+        end
+
+        it "should show error messages describing what needs to be fixed" do
+          click_button submit
+          page.should have_a(:error_explanation).section
+        end
+
       end
 
       describe "with valid information" do
