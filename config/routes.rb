@@ -5,11 +5,15 @@ Brain::Application.routes.draw do
   root 'static_pages#home'
   
   get '/signup', to: 'users#new'
+  get '/signin', to: 'sessions#new'
+  delete '/signout', to: 'sessions#destroy'
   get '/help', to: 'static_pages#help', via: 'get'
   get '/about', to: 'static_pages#about'
   get '/welcome', to: 'static_pages#welcome'
 
   resources :users, only: [:create]
+
+  resources :sessions, only: [:new, :create, :destroy]
 
   namespace :admin do
     resources :users, only: [:show, :index]

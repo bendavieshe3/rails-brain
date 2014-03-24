@@ -1,0 +1,28 @@
+<% title "Sign in", tagline: 'to My Web Brain' %>
+
+<p> Use the form below to sign in to your My Web Brain account.</p>
+
+<div class="row">
+  <div class="col-md-6 offset3">
+    <%= form_for(:session, url:sessions_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control auto-focus' %>
+        <p class="help-block">This is the email address you used to create your 
+          account.</p>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+        <p class="help-block">The password you chose. If you have forgotten, 
+          <%= link_to('click here', '#') %>.</p>
+      </div>
+
+      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+      <%= link_to "Not right now", root_path %>
+    <% end %> 
+  </div>
+</div>
+
+
