@@ -60,14 +60,6 @@ RSpec::Matchers.define :have_a  do | element |
     end
   end
 
-
-  def found_selector(*selectors)
-    selectors.detect do |selector|
-      page.has_selector?(selector)
-    end
-  end
-
-
   chain :table do
     @tag_type = 'table'
   end
@@ -123,6 +115,37 @@ RSpec::Matchers.define :have_an_alert  do
 
   description do 
     message = "have an alert (with class .alert)"
+  end
+end
+
+RSpec::Matchers.define :have_text  do | text |
+
+  match do | actual |
+    container = page
+    if @container 
+      container_selector = found_selector('#' + @container, '.' + @container)
+      container = page.find(:css, container_selector )
+    end
+    container.has_content? text
+  end
+
+  chain :in do | container |
+    @container = container.to_s.gsub('_','-')
+  end
+
+  failure_message_for_should do |actual|
+    message = "Could not find text '#{text}'"
+    message += " in container '#{@container}'." if @container
+  end
+
+  failure_message_for_should_not do |actual|
+    message = "Found text '#{text}'"
+    message += " in container '#{@container}'." if @container
+  end 
+
+  description do 
+    message = "have provided text '#{text}'"
+    message += " in container '#{@container}'" if @container
   end
 end
 

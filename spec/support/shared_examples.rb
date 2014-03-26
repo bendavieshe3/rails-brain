@@ -14,3 +14,10 @@ shared_examples_for "a signed in page" do
   it { should have_text(user.email).in(:navbar) }
 
 end
+
+shared_examples_for "a signed out page" do
+
+  it { should_not have_link('Sign out', href:signout_path) }
+  it { should have_link('Sign in', href:signin_path) }
+
+end

@@ -10,6 +10,7 @@ Brain::Application.routes.draw do
   get '/help', to: 'static_pages#help', via: 'get'
   get '/about', to: 'static_pages#about'
   get '/welcome', to: 'static_pages#welcome'
+  get '/today', to: 'today#index'
 
   resources :users, only: [:create]
 

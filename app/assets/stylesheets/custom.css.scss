@@ -72,3 +72,7 @@ footer {
   @include box_sizing;
 }
 
+.alert-error {
+  @extend .alert-danger
+}
+

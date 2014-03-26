@@ -1,7 +1,23 @@
 require 'spec_helper'
 
 describe "User Pages" do
+
+  include Helpers
+
   subject { page }
+
+  describe "signout process" do
+
+    before do
+      user = FactoryGirl.build(:user)
+      sign_in_as_a_user(user)
+      visit root_path
+      click_link "Sign out"
+    end
+
+    it_should_behave_like "a signed out page"
+
+  end
 
   describe "signup page " do
     before { visit signup_path }
@@ -31,8 +47,11 @@ describe "User Pages" do
       end
 
       describe "with valid information" do
+
+        let(:user) { FactoryGirl.build(:user) }
+
         before do
-          fill_in "Email", with: "user@example.com"
+          fill_in "Email", with: user.email
           fill_in "Password", with: "foobar"
           fill_in "Confirmation", with: "foobar"
         end
@@ -46,6 +65,14 @@ describe "User Pages" do
           click_button submit
           current_path.should == welcome_path
           page.should have_an_alert.of_type(:success)
+        end
+
+        describe "after creating the account" do
+
+          before { click_button submit }
+
+          it_should_behave_like "a signed in page"
+
         end
 
       end

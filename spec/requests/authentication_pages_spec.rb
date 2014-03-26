@@ -13,14 +13,23 @@ describe "Authentication" do
 
     it_should_behave_like "all pages"
 
-    describe 'signin process' do
+    it "should have an input field selected", js: true do
+      input("Email").should have_the_focus
+    end
+
+    describe 'signin process', focus:true do
 
       describe "with invalid information" do
         before { click_button "Sign in" }
 
         it "should return the user to the page and show an error" do
-          current_path.should == sigin_path
+          current_path.should == signin_path
           page.should have_an_alert.of_type(:error)
+        end
+
+        describe "after visting another page" do
+          before { click_link "Home" }
+          it { should_not have_an_alert.of_type(:error) }
         end
 
       end
